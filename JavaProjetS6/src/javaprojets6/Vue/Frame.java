@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package javaprojets6.Vue;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Alexandre
  */
-public class Frame {
+public class Frame extends JFrame{
     
 }

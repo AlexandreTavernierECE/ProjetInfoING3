@@ -210,4 +210,8 @@ public class Connexion {
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
     }
+    
+    public static void main (String args[]){
+        
+    }
 }
