@@ -11,6 +11,7 @@ package javaprojets6.Controleur;
 import javaprojets6.Controleur.SSHTunnel;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * 
@@ -31,11 +32,11 @@ public class Connexion {
     /**
      * ArrayList public pour les tables
      */
-    public ArrayList<String> tables = new ArrayList<>();
+    public static ArrayList<String> tables = new ArrayList<>();
     /**
      * ArrayList public pour les requêtes de sélection
      */
-    public ArrayList<String> requetes = new ArrayList<>();
+    public static ArrayList<String> requetes = new ArrayList<>();
     /**
      * ArrayList public pour les requêtes de MAJ
      */
@@ -211,7 +212,25 @@ public class Connexion {
         stmt.executeUpdate(requeteMaj);
     }
     
-    public static void main (String args[]){
+    public static void main (String args[]) throws SQLException, ClassNotFoundException{
+        
+        
+        Connexion co = new Connexion("hopital", "root","");
+        
+        /*co.ajouterTable("docteur");
+        
+        co.ajouterRequete("SELECT numero FROM docteur");
+        
+        requetes = co.remplirChampsRequete("SELECT numero FROM docteur");
+        
+        for (String element : requetes) {
+            System.out.println("Numero :" + element);
+        }
+        */
+        
+        //co.executeUpdate("INSERT INTO docteur (numero, specialite) VALUES ('300','Radiologue')");
+        
+        
         
     }
 }
