@@ -2,14 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
             <file>file:/D:/Softs/workspace_been/ProjetInfoING3/JavaProjetS6/src/javaprojets6/Controleur/DataBase.java</file>
-            <file>file:/D:/Softs/workspace_been/ProjetInfoING3/JavaProjetS6/src/javaprojets6/Controleur/JavaProjetS6.java</file>
             <file>file:/D:/Softs/workspace_been/ProjetInfoING3/JavaProjetS6/src/javaprojets6/Controleur/Connexion.java</file>
+            <file>file:/D:/Softs/workspace_been/ProjetInfoING3/JavaProjetS6/src/javaprojets6/Controleur/SSHTunnel.java</file>
+            <file>file:/D:/Softs/workspace_been/ProjetInfoING3/JavaProjetS6/src/javaprojets6/Vue/Interface.java</file>
         </group>
->>>>>>> 7e94d0cd4d7a444736179929380bc53f42ad49a4
     </open-files>
 </project-private>

@@ -10,10 +10,5 @@ package javaprojets6.Vue;
  * @author Alexandre
  */
 public class Interface {
-<<<<<<< HEAD
-    
-    // Test modification github
-=======
-    //coucou mat
->>>>>>> cabaf9032fc6c4ddb64b96c2555457a90bdb44df
+
 }

@@ -5,6 +5,8 @@
  */
 package javaprojets6.Controleur;
 
+import javaprojets6.Vue.Login;
+
 /**
  *
  * @author Alexandre
@@ -15,7 +17,7 @@ public class JavaProjetS6 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Login l = new Login();
     }
     
 }
