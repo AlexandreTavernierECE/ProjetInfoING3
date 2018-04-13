@@ -31,6 +31,10 @@ public class SSHTunnel {
      * @param firstHostPort Port utiliser pour se connecter au premier hôte
      * @param secondHostPort Port utiliser pour se connecter au second hôte
      */
+    
+    /** lol */
+   
+    
     public SSHTunnel(String username, String password, String firstHost, String secondHost, int firstHostPort, int secondHostPort) {
         this.username = username;
         this.password = password;

@@ -8,6 +8,7 @@ package javaprojets6.Vue;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javafx.scene.control.RadioButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,10 +35,8 @@ public class Login extends JFrame{
         JLabel nomBDDlabel =  new JLabel("Nom de la base :       ");
         JLabel loginECElabel =  new JLabel("Login ECE :                  ");
         JLabel passwordECElabel =  new JLabel("Mot de passe ECE :   ");
-        
-        
 	JButton con = new JButton("Connection");
-	
+	public boolean done = false;
 	
     public Login(){
         this.setSize(width,height);
@@ -78,7 +77,8 @@ public class Login extends JFrame{
         pan.add(getBar(5));
         pan.add(con);
         this.setContentPane(pan);
-	
+	pan.getRootPane().revalidate();
+    
         
         loc.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {
@@ -89,7 +89,7 @@ public class Login extends JFrame{
                 loginECElabel.setEnabled(!loc.isSelected());
                 passwordECE.setEnabled(!loc.isSelected());
                 passwordECElabel.setEnabled(!loc.isSelected());
-                }
+            }
 	});
         
         dis.addActionListener(new ActionListener(){
@@ -101,13 +101,18 @@ public class Login extends JFrame{
                 loginECElabel.setEnabled(!loc.isSelected());
                 passwordECE.setEnabled(!loc.isSelected());
                 passwordECElabel.setEnabled(!loc.isSelected());
-                
+             }
+	});
+        
+        con.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0) {
+                       done=true;
+                       hideWindow();
                 }
 	});
         
         pan.repaint();
         repaint();
-        try{Thread.sleep(1000/30);}catch(InterruptedException e) {e.printStackTrace();}
         pan.repaint();
         repaint();
         
@@ -116,5 +121,9 @@ public class Login extends JFrame{
 	JLabel j = new JLabel("");
 	j.setPreferredSize(new Dimension(1000, i));
 	return j;
+    }
+    
+    public void hideWindow(){
+        this.setVisible(false);
     }
 }
