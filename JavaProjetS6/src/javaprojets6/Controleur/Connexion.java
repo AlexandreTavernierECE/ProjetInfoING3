@@ -11,7 +11,6 @@ package javaprojets6.Controleur;
 import javaprojets6.Controleur.SSHTunnel;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * 
@@ -40,7 +39,7 @@ public class Connexion {
     /**
      * ArrayList public pour les requêtes de MAJ
      */
-    public ArrayList<String> requetesMaj = new ArrayList<>();
+    public static ArrayList<String> requetesMaj = new ArrayList<>();
 
     /**
      * Constructeur avec 3 paramètres : nom, login et password de la BDD locale
@@ -125,7 +124,24 @@ public class Connexion {
     public void ajouterRequeteMaj(String requete) {
         requetesMaj.add(requete);
     }
+    
+    /** méthode qui renvoie un tableau de string avec les champs des tables */
+    public String[] remplirtable(String table) throws SQLException {
+        
+        
+        
+        rset = stmt.executeQuery("select * from " + table);
+        rsetMeta = rset.getMetaData();
+        int nbColonne = rsetMeta.getColumnCount();
+        String liste[] = new String[nbColonne];
+        
+        for (int i = 0; i < nbColonne; i++) {
+            liste[i] = rsetMeta.getColumnName(i+1);
+        }
 
+        return liste;
+    }
+    
     /**
      * Méthode qui retourne l'ArrayList des champs de la table en parametre
      *
@@ -189,7 +205,7 @@ public class Connexion {
 
             // Concatener les champs de la ligne separes par ,
             for (int i = 1; i < nbColonne; i++) {
-                champs = champs + "," + rset.getString(i + 1);
+                champs = champs + "     " + rset.getString(i + 1);
             }
 
             // ajouter un "\n" à la ligne des champs
@@ -202,6 +218,37 @@ public class Connexion {
         // Retourner l'ArrayList
         return liste;
     }
+    
+    public String[][] remplirchamp(String table) throws SQLException {
+
+        
+        rset = stmt.executeQuery("SELECT * FROM " + table);
+        rsetMeta = rset.getMetaData();
+        int nbColonne = rsetMeta.getColumnCount();
+        
+        int nbligne = 0;
+        try {
+            rset.last();
+            nbligne = rset.getRow();
+            rset.beforeFirst();
+        }
+        catch(Exception ex) {
+           
+        }
+
+        String liste[][] = new String[nbligne][nbColonne];
+        int j = -1;
+  
+        while (rset.next()){
+            j++;
+            for (int i = 0; i < nbColonne; i++) {
+                
+                liste[j][i] = rset.getString(i+1);
+            }
+        }
+        
+        return liste;
+    }
 
     /**
      * Méthode qui execute une requete de MAJ en parametre
@@ -212,25 +259,5 @@ public class Connexion {
         stmt.executeUpdate(requeteMaj);
     }
     
-    public static void main (String args[]) throws SQLException, ClassNotFoundException{
-        
-        
-        Connexion co = new Connexion("hopital", "root","");
-        
-        /*co.ajouterTable("docteur");
-        
-        co.ajouterRequete("SELECT numero FROM docteur");
-        
-        requetes = co.remplirChampsRequete("SELECT numero FROM docteur");
-        
-        for (String element : requetes) {
-            System.out.println("Numero :" + element);
-        }
-        */
-        
-        //co.executeUpdate("INSERT INTO docteur (numero, specialite) VALUES ('300','Radiologue')");
-        
-        
-        
-    }
+
 }

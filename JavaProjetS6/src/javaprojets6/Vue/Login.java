@@ -8,6 +8,7 @@ package javaprojets6.Vue;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javafx.scene.control.RadioButton;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,26 +19,24 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Alexandre
+ * @author Thomas 
  */
 public class Login extends JFrame{
-        public int width = 300;
-        public int height = 265;
-        public JPanel pan = new JPanel();
-        public JRadioButton loc = new JRadioButton("Local");
-	public JRadioButton dis = new JRadioButton("Distance");
+        int width = 300;
+        int height = 265;
+        JPanel pan = new JPanel();
+        JRadioButton loc = new JRadioButton("Local");
+	JRadioButton dis = new JRadioButton("Distance");
         public JTextField nomBDD = new JTextField();
 	public JTextField login = new JTextField();
 	public JPasswordField password = new JPasswordField();
-	public JTextField loginECE = new JTextField();
-	public JPasswordField passwordECE = new JPasswordField();
-        public JLabel nomBDDlabel =  new JLabel("Nom de la base :       ");
-        public JLabel loginECElabel =  new JLabel("Login ECE :                  ");
-        public JLabel passwordECElabel =  new JLabel("Mot de passe ECE :   ");
-        
-        
+	JTextField loginECE = new JTextField();
+	JPasswordField passwordECE = new JPasswordField();
+        JLabel nomBDDlabel =  new JLabel("Nom de la base :       ");
+        JLabel loginECElabel =  new JLabel("Login ECE :                  ");
+        JLabel passwordECElabel =  new JLabel("Mot de passe ECE :   ");
 	public JButton con = new JButton("Connection");
-	
+	public boolean done = false;
 	
     public Login(){
         this.setSize(width,height);
@@ -78,7 +77,8 @@ public class Login extends JFrame{
         pan.add(getBar(5));
         pan.add(con);
         this.setContentPane(pan);
-	
+	pan.getRootPane().revalidate();
+    
         
         loc.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent arg0) {
@@ -89,7 +89,7 @@ public class Login extends JFrame{
                 loginECElabel.setEnabled(!loc.isSelected());
                 passwordECE.setEnabled(!loc.isSelected());
                 passwordECElabel.setEnabled(!loc.isSelected());
-                }
+            }
 	});
         
         dis.addActionListener(new ActionListener(){
@@ -101,14 +101,18 @@ public class Login extends JFrame{
                 loginECElabel.setEnabled(!loc.isSelected());
                 passwordECE.setEnabled(!loc.isSelected());
                 passwordECElabel.setEnabled(!loc.isSelected());
-                
+             }
+	});
+        
+        con.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent arg0) {
+                       done=true;
+                       hideWindow();
                 }
 	});
         
-        
         pan.repaint();
         repaint();
-        try{Thread.sleep(1000/30);}catch(InterruptedException e) {e.printStackTrace();}
         pan.repaint();
         repaint();
         
@@ -119,4 +123,7 @@ public class Login extends JFrame{
 	return j;
     }
     
+    public void hideWindow(){
+        this.setVisible(false);
+    }
 }
