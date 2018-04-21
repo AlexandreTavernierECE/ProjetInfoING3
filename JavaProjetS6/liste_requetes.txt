@@ -1,0 +1,32 @@
+/** Liste des requêtes **/
+/** author: Mathieu **/
+
+R1.
+SELECT prenom, nom FROM malade WHERE mutuelle = "MAAF";
+
+R2.
+SELECT prenom, nom 
+FROM employe AS emp, infirmier AS inf
+WHERE emp.numero = inf.numero
+AND inf.rotation ="NUIT";
+
+R3.
+SELECT ser.nom, batiment, prenom, emp.nom, specialite
+FROM service AS ser, employe AS emp, docteur AS doc
+WHERE ser.directeur = doc.numero
+AND ser.directeur = emp.numero;
+
+R4.
+SELECT no_chambre, lit, ser.nom, prenom, mal.nom, mutuelle
+FROM hospitalisation AS hos, malade AS mal, service AS ser
+WHERE hos.no_malade = mal.numero
+AND ser.batiment = "B"
+AND ser.code = hos.code_service
+AND mal.mutuelle LIKE '%MN%';
+
+R5.
+SELECT code_service, AVG(salaire) AS moyenne_des_salaires 
+FROM infirmier
+WHERE code_service = "REA"
+AND code_service = "CAR"
+AND code_service = "CHG";    
